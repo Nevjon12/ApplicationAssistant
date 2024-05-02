@@ -1,0 +1,53 @@
+.inputs{
+  margin: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.apps{
+
+  margin: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.root{
+  margin: 5px;
+  padding: 5px;
+  border-style: dashed;
+  border-color: black;
+}
+
+.input{
+  margin: 10px;
+}
+
+.inputcontainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appcard{
+  margin: 5px;
+  padding: 5px;
+  max-width: max-content;
+  border-style:double;
+  border-color: blue;
+}
+
+
+
+
