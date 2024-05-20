@@ -1,8 +1,15 @@
-
+import { useEffect } from "react"
 
 export default function AppCard({cards}){
 
-  //Check the application response data to render the applications saved in the database 
+  const deleteAppCard = ()=>{
+    console.log('deleting')
+    // fetch('/api', {
+    //   method: 'DELETE'
+    // })
+  }
+
+
   
 
   return(
@@ -13,7 +20,8 @@ export default function AppCard({cards}){
       Role: {cards.position}
       <br />
       ID: {cards._id}
-
+      <br />
+      <button onClick={deleteAppCard}>Delete</button>
     </div>
     
   )
