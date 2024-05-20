@@ -1,12 +1,11 @@
-import { useEffect } from "react"
-
 export default function AppCard({cards}){
 
   const deleteAppCard = ()=>{
     console.log('deleting')
-    // fetch('/api', {
-    //   method: 'DELETE'
-    // })
+    fetch('/api', {
+      method: 'DELETE'
+    })
+    .then(()=>{console.log('Deleted')})
   }
 
 
