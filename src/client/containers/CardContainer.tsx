@@ -6,6 +6,8 @@ export default function ApplicationContainer(){
   const [cards, setCards] = useState()
   const [isLoading, setIsLoading] = useState(true);
 
+
+
   useEffect(() => { 
     fetch('/api')
       .then((data) => {
@@ -15,13 +17,11 @@ export default function ApplicationContainer(){
         setCards(json.data);
         setIsLoading(false)
       })
-    }, []);
+    });
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  console.log(cards[0])
 
   return(
     <>
