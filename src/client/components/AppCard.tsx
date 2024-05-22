@@ -1,8 +1,16 @@
-
-
 export default function AppCard({cards}){
 
-  //Check the application response data to render the applications saved in the database 
+
+  const deleteAppCard = ()=>{
+
+    console.log('deleting')
+    fetch(`/api/${cards._id}`, {
+      method: 'DELETE'
+    })
+    .then(()=>{console.log('Delete function triggered')})
+  }
+
+
   
 
   return(
@@ -12,8 +20,10 @@ export default function AppCard({cards}){
       <br />
       Role: {cards.position}
       <br />
-      ID: {cards._id}
-
+      <button> Notes </button>
+      <button onClick={deleteAppCard}> Delete </button>
+      
+      
     </div>
     
   )

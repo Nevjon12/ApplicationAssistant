@@ -5,6 +5,17 @@ export default function ApplicationContainer(){
 
   const [cards, setCards] = useState()
   const [isLoading, setIsLoading] = useState(true);
+  
+  // The code snippet below is a possible alternative way to approach setting state, test later
+  // async function getAllCards() {
+
+  //   const response = await fetch('/api');
+  //   const allCards = await response.json();
+  //   console.log(allCards)
+
+  // }
+ 
+
 
   useEffect(() => { 
     fetch('/api')
@@ -15,27 +26,24 @@ export default function ApplicationContainer(){
         setCards(json.data);
         setIsLoading(false)
       })
-    }, []);
+    },[]);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  console.log(cards[0])
-
   return(
-    <>
-      <h1>Applications</h1>
+
       <div className="apps">
-        
+        <h1>Applications</h1>
+        <div className="cards">
         {
           cards.map((card, index) => {
             return <ApplicationCards key={index} cards={card} />;
           })
         }
-
+        </div>
       </div>
-    </>
   )
 
 
