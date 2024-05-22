@@ -13,13 +13,14 @@ jobCardController.getAllJobs = async ( req, res, next) => {
 //Add a new job to the database
 
 jobCardController.add = async ( req, res, next) => {
-  console.log('Card Add')
+  
   const job = new JobCard({
     position: `${req.body.position}`,
     companyName: `${req.body.companyName}`
   });
+  
   await job.save();
-  console.log(job)
+
   next();
 };
 
@@ -30,13 +31,18 @@ jobCardController.edit = ( req, res, next) => {
   next();
 };
 
+jobCardController.editPopUp = (req, res, next) => {
+  
+
+};
+
 //Delete an existing job from the database
 
 jobCardController.delete = async( req, res, next) => {
   const id = req.params.id;
 
   await JobCard.findOneAndDelete({_id: id})
-  console.log('Delete Controller')
+
   next();
 };
 

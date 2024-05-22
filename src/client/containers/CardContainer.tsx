@@ -33,18 +33,17 @@ export default function ApplicationContainer(){
   }
 
   return(
-    <>
-      <h1>Applications</h1>
+
       <div className="apps">
-        
+        <h1>Applications</h1>
+        <div className="cards">
         {
           cards.map((card, index) => {
             return <ApplicationCards key={index} cards={card} />;
           })
         }
-
+        </div>
       </div>
-    </>
   )
 
 

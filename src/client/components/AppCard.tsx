@@ -20,9 +20,10 @@ export default function AppCard({cards}){
       <br />
       Role: {cards.position}
       <br />
-      ID: {cards._id}
-      <br />
-      <button onClick={deleteAppCard}>Delete</button>
+      <button> Notes </button>
+      <button onClick={deleteAppCard}> Delete </button>
+      
+      
     </div>
     
   )
