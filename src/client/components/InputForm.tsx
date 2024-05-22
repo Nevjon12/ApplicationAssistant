@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function InputForm(){
 
+
   const [formValues, setFormValues] = useState({
     position: '',
     companyName: '',
@@ -23,7 +24,8 @@ export default function InputForm(){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValues),
-    });
+    })
+    .then(()=>{});
   };
 
 

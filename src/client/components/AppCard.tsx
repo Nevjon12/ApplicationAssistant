@@ -1,11 +1,13 @@
 export default function AppCard({cards}){
 
+
   const deleteAppCard = ()=>{
+
     console.log('deleting')
-    fetch('/api', {
+    fetch(`/api/${cards._id}`, {
       method: 'DELETE'
     })
-    .then(()=>{console.log('Deleted')})
+    .then(()=>{console.log('Delete function triggered')})
   }
 
 

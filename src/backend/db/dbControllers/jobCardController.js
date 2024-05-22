@@ -1,7 +1,4 @@
-const mongoose = require('mongoose');
-
-
-//DB Imports
+//DB Model Imports
 const JobCard = require('../dbModels/jobCard')
 
 const jobCardController = {};
@@ -35,8 +32,11 @@ jobCardController.edit = ( req, res, next) => {
 
 //Delete an existing job from the database
 
-jobCardController.delete = ( req, res, next) => {
-  console.log('Card Delete')
+jobCardController.delete = async( req, res, next) => {
+  const id = req.params.id;
+
+  await JobCard.findOneAndDelete({_id: id})
+  console.log('Delete Controller')
   next();
 };
 
