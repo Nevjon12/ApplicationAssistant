@@ -53,7 +53,13 @@ export default function InputForm(props){
   return(
 
     <div className="inputcontainer">
-      <form   onSubmit={handleSubmit}>
+      <form  style={{
+        display:'flex',
+        justifyContent: "center",
+        alignItems: 'center',
+        flexDirection: 'column',
+        paddingBottom: '10px'
+      }} onSubmit={handleSubmit}>
         <input type="text" name='position' placeholder={'Position'} className="input" value={formValues.position} onChange={handleChange}></input>
         <input  type="text" name='companyName' placeholder={'Company Name'} className="input" value={formValues.companyName} onChange={handleChange}></input>
         <input  type="text" defaultValue={new Date().toLocaleDateString()} className="input"></input>

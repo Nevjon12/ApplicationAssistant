@@ -30,7 +30,7 @@ export default function ApplicationContainer(props){
         <div className="cards">
         {
           state.map((card, index) => {
-            return <ApplicationCards state={state} setState={setState} key={index} cards={card} />;
+            return <ApplicationCards state={state} setState={setState} key={index} cards={card} setCurrentCard={props.setCurrentCard} currentCard={props.currentCard}/>;
           })
         }
         </div>
