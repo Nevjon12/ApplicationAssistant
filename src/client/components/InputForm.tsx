@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export default function InputForm(){
+export default function InputForm(props){
+
+
+  const state = props.state.data
+  const updateState = props.state.setCards;
 
 
   const [formValues, setFormValues] = useState({
@@ -9,12 +13,17 @@ export default function InputForm(){
     date: new Date().toLocaleDateString(),
   });
 
+
   const handleChange = (event) => {
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
     });
   };
+
+
+  
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,9 +33,21 @@ export default function InputForm(){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValues),
-    })
-    .then(()=>{});
+    });
+
+    const newState = [...state, formValues];
+    updateState(newState);
+
+    setFormValues({
+      position: '',
+      companyName: '',
+      date: new Date().toLocaleDateString(),
+      });
+
   };
+
+
+
 
 
   return(

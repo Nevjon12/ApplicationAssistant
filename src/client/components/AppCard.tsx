@@ -1,27 +1,24 @@
-export default function AppCard({cards}){
+export default function AppCard(props){
+    console.log(props)
 
 
-  const deleteAppCard = ()=>{
+  const handleDelete = async()=>{
 
-    console.log('deleting')
-    fetch(`/api/${cards._id}`, {
+    await fetch(`/api/${props.cards._id}`, {
       method: 'DELETE'
     })
-    .then(()=>{console.log('Delete function triggered')})
-  }
 
-
-  
+  };
 
   return(
 
     <div className="appcard">
-      Company: {cards.companyName}
+      Company: {props.cards.companyName}
       <br />
-      Role: {cards.position}
+      Role: {props.cards.position}
       <br />
       <button> Notes </button>
-      <button onClick={deleteAppCard}> Delete </button>
+      <button onClick={handleDelete}> Delete </button>
       
       
     </div>
