@@ -1,5 +1,4 @@
 export default function AppCard(props){
-    console.log(props)
 
 
   const handleDelete = async()=>{
@@ -10,14 +9,18 @@ export default function AppCard(props){
 
   };
 
+  const handleClick = ()=>{
+    console.log('card is clicked')
+
+    props.setCurrentCard(props.cards._id)
+  }
   return(
 
-    <div className="appcard">
+    <div className="appcard" onClick={handleClick}>
       Company: {props.cards.companyName}
       <br />
       Role: {props.cards.position}
       <br />
-      <button> Notes </button>
       <button onClick={handleDelete}> Delete </button>
       
       
