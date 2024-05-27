@@ -1,20 +1,35 @@
-import { useEffect } from "react"
+import { useState } from "react"
 
 
 export default function Notes(props){
 
-  useEffect(()=>{
+  const [noteContent, setNoteContent] = useState()
 
-    //Render the text related to the specific card selected
+  const onChange = (event)=>{
+    
+    event.target.value = event.target.value;
+    setNoteContent(event.target.value)
+  
+  }
 
-  }, [props.currentCard])
+    
+  const currentNote = props.data.find(card => card._id === props.current) || 'nothing yet';
+  console.log('current Note',currentNote)
 
+
+  const handleClick = (event) => {
+    event.preventDefault()
+    console.log('current state',noteContent);
+
+  }
+
+  
 
 return (
   <form className="notes">
 
-  <textarea style={{width:'100%', boxSizing:'border-box', height:'90%'}} defaultValue={'Notes go here'} /> 
-  <button type="submit" >Add Note</button>
+  <textarea name='notetext' style={{width:'100%', boxSizing:'border-box', height:'90%'}} defaultValue={currentNote.position} onChange={onChange}  /> 
+  <button type='submit' onClick={handleClick}>Add Note</button>
   </form>
 
 )

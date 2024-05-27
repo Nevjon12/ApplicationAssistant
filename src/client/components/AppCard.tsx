@@ -10,9 +10,10 @@ export default function AppCard(props){
   };
 
   const handleClick = ()=>{
-    console.log('card is clicked')
 
     props.setCurrentCard(props.cards._id)
+
+
   }
   return(
 
