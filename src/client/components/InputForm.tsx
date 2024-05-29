@@ -34,9 +34,14 @@ export default function InputForm(props){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValues),
-    });
-
-    const newState = [...state, formValues];
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    ;
+    const newState = [
+    ...state, 
+    formValues
+    ];
     updateState(newState);
 
     setFormValues({

@@ -12,9 +12,9 @@ router.get('/', jobCardController.getAllJobs, (req, res)=>{
   res.status(200).json({data : res.locals.cards});
 })
 
-router.post('/', jobCardController.add, jobCardController.getAllJobs, (req, res)=>{
+router.post('/', jobCardController.add, (req, res)=>{
 
-  res.status(200).json({data: res.locals.cards})
+  res.status(200).json({newCard: res.locals.newCard})
 })
 
 router.delete('/:id', jobCardController.delete, (req,res)=>{
