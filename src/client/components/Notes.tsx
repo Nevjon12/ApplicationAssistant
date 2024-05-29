@@ -13,7 +13,7 @@ export default function Notes(props){
   }
 
     
-  const currentNote = props.data.find(card => card._id === props.current) || 'nothing yet';
+  const currentNote = props.data.find(card => card._id === props.current) || 'No card selected';
   console.log('current Note',currentNote)
 
 
@@ -28,7 +28,7 @@ export default function Notes(props){
 return (
   <form className="notes">
 
-  <textarea name='notetext' style={{width:'100%', boxSizing:'border-box', height:'90%'}} defaultValue={currentNote.position} onChange={onChange}  /> 
+  <textarea name='notetext' style={{width:'100%', boxSizing:'border-box', height:'90%'}} value={typeof currentNote === 'object' ? currentNote.position + ' at ' + currentNote.companyName : currentNote} onChange={onChange}  /> 
   <button type='submit' onClick={handleClick}>Add Note</button>
   </form>
 

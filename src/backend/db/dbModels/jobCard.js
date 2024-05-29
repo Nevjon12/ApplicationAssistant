@@ -4,12 +4,15 @@ const jobCardSchema = new mongoose.Schema({
 
   position : {
     type: String,
+    minlength: 3,
   },
   companyName: {
     type: String,
+    minlength: 3,
   },
   notes: {
     type: String,
+    default: 'No notes yet'
   }
 })
 

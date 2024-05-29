@@ -16,9 +16,9 @@ jobCardController.add = async ( req, res, next) => {
   
   const job = new JobCard({
     position: `${req.body.position}`,
-    companyName: `${req.body.companyName}`
+    companyName: `${req.body.companyName}`,
   });
-  
+    console.log('job added', job)
   await job.save();
 
   next();
