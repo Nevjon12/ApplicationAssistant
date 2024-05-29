@@ -8,7 +8,8 @@ export default function InputForm(props){
 
 
   const [formValues, setFormValues] = useState({
-    position: '',
+    position: 
+    '',
     companyName: '',
     date: new Date().toLocaleDateString(),
   });
@@ -60,8 +61,8 @@ export default function InputForm(props){
         flexDirection: 'column',
         paddingBottom: '10px'
       }} onSubmit={handleSubmit}>
-        <input type="text" name='position' placeholder={'Position'} className="input" value={formValues.position} onChange={handleChange}></input>
-        <input  type="text" name='companyName' placeholder={'Company Name'} className="input" value={formValues.companyName} onChange={handleChange}></input>
+        <input minLength={3} type="text" name='position' placeholder={'Position'} className="input" value={formValues.position} onChange={handleChange}></input>
+        <input  minLength={3} type="text" name='companyName' placeholder={'Company Name'} className="input" value={formValues.companyName} onChange={handleChange}></input>
         <input  type="text" defaultValue={new Date().toLocaleDateString()} className="input"></input>
         <br />
         <input type="submit" value='Add to list'/>
