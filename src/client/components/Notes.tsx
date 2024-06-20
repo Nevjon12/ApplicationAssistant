@@ -29,7 +29,7 @@ return (
   <form className="notes">
 
   <textarea name='notetext' style={{width:'100%', boxSizing:'border-box', height:'90%'}} defaultValue={currentNote.position} onChange={onChange}  /> 
-  <button type='submit' onClick={handleClick}>Add Note</button>
+  <button type='submit' onClick={handleClick}>Save Note</button>
   </form>
 
 )

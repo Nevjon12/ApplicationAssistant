@@ -3,25 +3,17 @@ import { useEffect, useState } from "react";
 
 export default function ApplicationContainer(props){
 
-  const [isLoading, setIsLoading] = useState(true);
-  const state = props.data;
-  const setState = props.setCards;
+  const [state, setState] = useState(() => {
+    // Attempt to fetch the stored data using a key when the component initializes
+    const storedData = localStorage.getItem('formData');
+    // If data exists, parse and return it, otherwise return an initial value (e.g., empty array)
+    return storedData ? JSON.parse(storedData) : [];
+  });
+
+    console.log("Data in AppContainer",props.data)
 
 
-  useEffect(() => { 
-    fetch('/api')
-      .then((data) => {
-        return data.json()
-      })
-      .then(json => {
-        setState(json.data);
-        setIsLoading(false)
-      })
-  },[]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return(
 
@@ -30,7 +22,13 @@ export default function ApplicationContainer(props){
         <div className="cards">
         {
           state.map((card, index) => {
-            return <ApplicationCards state={state} setState={setState} key={index} cards={card} setCurrentCard={props.setCurrentCard} currentCard={props.currentCard}/>;
+            return <ApplicationCards 
+              state={state} 
+              setState={setState} 
+              key={index} 
+              cards={card} 
+              setCurrentCard={props.setCurrentCard} 
+              currentCard={props.currentCard}/>;
           })
         }
         </div>

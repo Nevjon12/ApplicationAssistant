@@ -2,14 +2,13 @@ import { useState } from "react";
 
 export default function InputForm(props){
 
-
-  const state = props.state.data
   const updateState = props.state.setCards;
 
 
   const [formValues, setFormValues] = useState({
     position: '',
     companyName: '',
+    notes: '',
     date: new Date().toLocaleDateString(),
   });
 
@@ -24,27 +23,28 @@ export default function InputForm(props){
 
   
 
+const handleSubmit = () => {
+  
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch('/api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formValues),
-    });
+  const existingSubmissionsString = localStorage.getItem('formData');
+  const existingSubmissions = existingSubmissionsString ? JSON.parse(existingSubmissionsString) : [];
 
-    const newState = [...state, formValues];
-    updateState(newState);
+  const updatedSubmissions = [...existingSubmissions, formValues];
 
-    setFormValues({
-      position: '',
-      companyName: '',
-      date: new Date().toLocaleDateString(),
-      });
+  localStorage.setItem('formData', JSON.stringify(updatedSubmissions));
 
-  };
+  updateState(updatedSubmissions);
+
+  // Clear the form
+  setFormValues({
+    position: '',
+    companyName: '',
+    notes: '',
+    date: new Date().toLocaleDateString(),
+  });
+
+  
+};
 
 
 
