@@ -1,20 +1,19 @@
 export default function AppCard(props){
 
 
-  const handleDelete = async()=>{
-
-    await fetch(`/api/${props.cards._id}`, {
-      method: 'DELETE'
-    })
-
+  const handleDelete = ()=>{
+    const formData = JSON.parse(localStorage.getItem(`formData`));
+    formData.splice(props.id,1);
+    localStorage.setItem('formData', JSON.stringify(formData))
+    props.setState(formData)
   };
 
   const handleClick = ()=>{
 
-    props.setCurrentCard(props.cards._id)
-
+    props.setCurrentCard(props.id)
 
   }
+
   return(
 
     <div className="appcard" onClick={handleClick}>
