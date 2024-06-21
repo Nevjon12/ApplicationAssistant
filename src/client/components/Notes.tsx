@@ -15,7 +15,7 @@ export default function Notes(props){
   }
 
     
-  let currentNote = props.current;
+  const currentNote = props.current;
  
 
 
