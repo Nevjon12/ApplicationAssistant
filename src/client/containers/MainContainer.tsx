@@ -9,9 +9,9 @@ import Notes from "../components/Notes";
 export default function MainContainer(){
 
     const [cards, setCards] = useState([]);
-    const [currentCard, setCurrentCard] = useState()
+    const [currentCard, setCurrentCard] = useState('')
 
-    console.log('current Card State', currentCard);
+
   
 
     useEffect(()=>{
@@ -32,9 +32,9 @@ export default function MainContainer(){
       <div className="main">
         <h1>Application Tracker</h1>
         <>
-        <InputContainer data={cards} setCards={setCards} />
+        <InputContainer data={cards} setCards={setCards} currentCard={currentCard} />
 
-        <ApplicationContainer data={cards} setCards={setCards} setCurrentCard={setCurrentCard} currentCard={currentCard}/>
+        <ApplicationContainer data={cards} setCards={setCards} setCurrentCard={setCurrentCard} />
         </>
         <Notes data={cards} current={currentCard} />
       </div>

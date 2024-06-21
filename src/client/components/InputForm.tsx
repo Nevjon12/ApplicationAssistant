@@ -3,9 +3,11 @@ import { useState } from "react";
 export default function InputForm(props){
 
   const updateState = props.state.setCards;
+  const id = props.state.data.length;
 
 
   const [formValues, setFormValues] = useState({
+    id: id,
     position: '',
     companyName: '',
     notes: '',
@@ -37,6 +39,7 @@ const handleSubmit = () => {
 
   // Clear the form
   setFormValues({
+    id: id,
     position: '',
     companyName: '',
     notes: '',
