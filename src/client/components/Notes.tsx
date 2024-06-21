@@ -11,21 +11,28 @@ export default function Notes(props){
     
     event.target.value = event.target.value;
     setNoteContent(event.target.value)
-  
+    console.log(noteContent)
   }
 
     
-  const currentNote = props.current;
-  console.log('Currentnote', currentNote)
+  let currentNote = props.current;
  
 
 
 
   const saveNote = (event) => {
     event.preventDefault()
-    
+
+  
     const formData = JSON.parse(localStorage.getItem('formData'));
-    console.log('Save Note', formData[props.current].companyName)
+
+    console.log('data', formData[currentNote].notes);
+    console.log('index to update',currentNote);
+
+    formData[currentNote].notes = 'someInfo';
+
+    localStorage.setItem('formData', JSON.stringify(formData));
+    // currentNote = formData[currentNote].notes
 
   }
 
