@@ -9,9 +9,9 @@ import Notes from "../components/Notes";
 export default function MainContainer(){
 
     const [cards, setCards] = useState([]);
-    const [currentCard, setCurrentCard] = useState(0)
+    const [currentCard, setCurrentCard] = useState()
 
-    console.log("Data in MainContainer", cards)
+    console.log('current Card State', currentCard);
   
 
     useEffect(()=>{

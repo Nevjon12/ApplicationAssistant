@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "dev": "concurrently \"npm:serve\" \"npm:start\"",
     "serve": "vite",
     "start": "nodemon src/backend/server.js",
     "build": "tsc && vite build",

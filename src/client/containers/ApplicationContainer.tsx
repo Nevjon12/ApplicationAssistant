@@ -1,5 +1,5 @@
 import ApplicationCards from "../components/AppCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ApplicationContainer(props){
 
@@ -10,10 +10,6 @@ export default function ApplicationContainer(props){
     return storedData ? JSON.parse(storedData) : [];
   });
 
-    console.log("Data in AppContainer",props.data)
-
-
-
 
   return(
 
@@ -22,7 +18,8 @@ export default function ApplicationContainer(props){
         <div className="cards">
         {
           state.map((card, index) => {
-            return <ApplicationCards 
+            return <ApplicationCards
+              id={index}
               state={state} 
               setState={setState} 
               key={index} 
