@@ -1,27 +1,27 @@
-export default function AppCard({cards}){
+export default function AppCard(props){
 
 
-  const deleteAppCard = ()=>{
+  const handleDelete = ()=>{
+    const formData = JSON.parse(localStorage.getItem(`formData`));
+    formData.splice(props.id,1);
+    localStorage.setItem('formData', JSON.stringify(formData))
+    props.setState(formData)
+  };
 
-    console.log('deleting')
-    fetch(`/api/${cards._id}`, {
-      method: 'DELETE'
-    })
-    .then(()=>{console.log('Delete function triggered')})
+  const handleClick = ()=>{
+
+    props.setCurrentCard(props.id)
+
   }
-
-
-  
 
   return(
 
-    <div className="appcard">
-      Company: {cards.companyName}
+    <div className="appcard" onClick={handleClick}>
+      Company: {props.cards.companyName}
       <br />
-      Role: {cards.position}
+      Role: {props.cards.position}
       <br />
-      <button> Notes </button>
-      <button onClick={deleteAppCard}> Delete </button>
+      <button onClick={handleDelete}> Delete </button>
       
       
     </div>

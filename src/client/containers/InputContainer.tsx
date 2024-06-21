@@ -2,7 +2,7 @@ import InputForm from "../components/InputForm";
 
 
 
-export default function InputContainer(){
+export default function InputContainer(props){
 
   return(
     <div className="inputs">
@@ -10,7 +10,7 @@ export default function InputContainer(){
       <br/>
       <div >
 
-        <InputForm/>
+        <InputForm state={props}/>
 
       </div>
 

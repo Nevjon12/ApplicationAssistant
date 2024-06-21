@@ -7,6 +7,9 @@ const jobCardSchema = new mongoose.Schema({
   },
   companyName: {
     type: String,
+  },
+  notes: {
+    type: String,
   }
 })
 

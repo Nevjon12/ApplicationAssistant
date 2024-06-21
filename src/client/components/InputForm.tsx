@@ -1,13 +1,19 @@
 import { useState } from "react";
 
-export default function InputForm(){
+export default function InputForm(props){
+
+  const updateState = props.state.setCards;
+ 
+
 
 
   const [formValues, setFormValues] = useState({
     position: '',
     companyName: '',
+    notes: '',
     date: new Date().toLocaleDateString(),
   });
+
 
   const handleChange = (event) => {
     setFormValues({
@@ -16,23 +22,45 @@ export default function InputForm(){
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch('/api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formValues),
-    })
-    .then(()=>{});
-  };
+
+  
+
+const handleSubmit = () => {
+  
+  const existingSubmissionsString = localStorage.getItem('formData');
+  const existingSubmissions = existingSubmissionsString ? JSON.parse(existingSubmissionsString) : [];
+
+  const updatedSubmissions = [...existingSubmissions, formValues];
+
+  localStorage.setItem('formData', JSON.stringify(updatedSubmissions));
+
+  updateState(updatedSubmissions);
+
+  // Clear the form
+  setFormValues({
+    position: '',
+    companyName: '',
+    notes: '',
+    date: new Date().toLocaleDateString(),
+  });
+
+  
+};
+
+
+
 
 
   return(
 
     <div className="inputcontainer">
-      <form   onSubmit={handleSubmit}>
+      <form  style={{
+        display:'flex',
+        justifyContent: "center",
+        alignItems: 'center',
+        flexDirection: 'column',
+        paddingBottom: '10px'
+      }} onSubmit={handleSubmit}>
         <input type="text" name='position' placeholder={'Position'} className="input" value={formValues.position} onChange={handleChange}></input>
         <input  type="text" name='companyName' placeholder={'Company Name'} className="input" value={formValues.companyName} onChange={handleChange}></input>
         <input  type="text" defaultValue={new Date().toLocaleDateString()} className="input"></input>
